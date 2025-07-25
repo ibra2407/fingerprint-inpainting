@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:96b2bab5a557397444e28bcf8a2d39f2f509213b93591b28eaf80ac770e0140e
-size 54
+The goal of this project is to inpaint fingerprints - the context being that skin diseases (e.g. eczema), manual labour and againg can degrade the quality of fingerprints, which are important biological identifiers for our use of technology today. Areas such as personal identification (in the case of our phones, border access, government service access) and forensics would be greatly impacted if nigh-perfect fingerprint inpainting existed. This project is an attempt at doing so, primarily inspired by AI inpainting of old maps. The project uses the MNIST fingerprint dataset where the images were organised into the main basic fingerprint patterns such as whorl, arches and loops.
+
+Before developing the models, we developed a data pipeline that would greatly enhance our data - we used Roboflow to manually label some of the patterns observed with a bounding box, and then trained a model to identify the most prominent fingerprint pattern in a given image. We used this to then mask out the pattern from the images, which enables us to train our inpainting model to balance out weak areas (suppose it recreates whorls badly - we would supply it with more whorl-masked images). Another useful fact that we exploited is that the fingerprint images often contained multiple patterns in one image, thus boosting the use of the masking model's utility.
+
+The PDF report showcases our initial attempts at developing the AI models. We primarily used U-Net architecture as the base, and added on a variety of enhancements, such as multi-head attention and more.
+
+
+This project was originally done using SUTD's GPU cluster as well as Google Colab's A100 GPU. The .ipynb file in this repository is from a post-project exploration, where we used an old gaming laptop as a GPU node. We had the laptop be able to dualboot into Linux and Windows. Then, with Linux on, we used LXDE as a lightweight GUI, and from there, used Tailscale to SSH into the gaming laptop using our personal laptops. We explored this because we were curious which one of the models from our initial project could be reliably trained using a relatively weaker GPU. Out of the 5 models (base, model2, model3, model4 and model5, in order of complexity), we were able to train model3 reliably on this much weaker GPU.
+
+The training took about 3 whole days to complete, which was a far cry from training it on the school's GPU cluster, which took only about 12 hours. However, the learning experience with dualbooting, remote access and optimising a device for machine learning (such as using a lightweight GUI that doesn't impact the RAM usage of a device) was extremely rewarding and interesting, elevating our appreciation of the current commercial AI landscape.
+
