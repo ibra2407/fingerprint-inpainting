@@ -9,3 +9,4 @@ This project was originally done using SUTD's GPU cluster as well as Google Cola
 
 The training took about 3 whole days to complete, which was a far cry from training it on the school's GPU cluster, which took only about 12 hours. However, the learning experience with dualbooting, remote access and optimising a device for machine learning (such as using a lightweight GUI that doesn't impact the RAM usage of a device) was extremely rewarding and interesting, elevating our appreciation of the current commercial AI landscape.
 
+Our data pipeline can be found at: https://github.com/jinchad/fingerprint-reconstruction/tree/main/Fingerprint%20Classifier 
